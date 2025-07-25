@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <title>3 Cards Example</title>
+  <style>
+    .card-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .card {
+      width: 200px;
+      padding: 20px;
+      background-color: #f3f3f3;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h2>Dynamic Card Display</h2>
+  <div id="cardContainer" class="card-container"></div>
+
+  <script>
+    const cardsData = [
+      { title: "Card 1", description: "This is the first card." },
+      { title: "Card 2", description: "Second card content goes here." },
+      { title: "Card 3", description: "And here is the third card." }
+    ];
+
+    const container = document.getElementById("cardContainer");
+
+    cardsData.forEach(card => {
+      const div = document.createElement("div");
+      div.className = "card";
+      div.innerHTML = `<h3>${card.title}</h3><p>${card.description}</p>`;
+      container.appendChild(div);
+    });
+  </script>
+</body>
+</html>

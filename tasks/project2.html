@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    input, button { padding: 6px; margin-right: 5px; }
+    ul { padding-left: 20px; }
+    li.completed { text-decoration: line-through; }
+    .delete-btn { margin-left: 10px; color: red; cursor: pointer; }
+
+  </style>
+  
+</head>
+<body>
+  <h2>To Do List</h2>
+  <input id="taskInput" placeholder="Enter task" />
+  <button onclick="add()">Add</button>
+  <ul id="taskList"></ul>
+
+  <script>
+    const list = document.getElementById("taskList");
+    const input = document.getElementById("taskInput");
+
+    function add() {
+      const text = input.value.trim();
+      if (!text) return;
+
+      const li = document.createElement("li");
+      li.textContent = text;
+
+      li.onclick = () => li.classList.toggle("completed");
+
+      const del = document.createElement("span");
+      del.textContent = "🗑";
+      del.className = "delete-btn";
+      del.onclick = (e) => {
+        e.stopPropagation(); // Prevent toggling completion
+        li.remove();
+      };
+
+      li.appendChild(del);
+      list.appendChild(li);
+      input.value = "";
+    }
+  </script>
+</body>
+</html>
